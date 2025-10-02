@@ -347,7 +347,13 @@ def exercice60(l,L):
     for i in range(L):
         print("*",""*(l-2),"*")
     print(l*"*")
-    
+
+def exercice61(L):
+    L0 = L[0]
+    for i in range(len(L)):
+         for j in range(len(L)-i):
+              if L[i] < L[i + 1]
+     
 
                
 
