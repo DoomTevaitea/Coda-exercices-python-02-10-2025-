@@ -266,17 +266,85 @@ def exercice50(N):
          L.append(L[-1]+L[-2])
     print(L)
 
+def exercice51(N):
+      for i in range(1,N+1):
+        pa=[1]
+        for j in range(i):
+            na = pa + [1]
+            for e in range(0,len(pa) - 1):
+                 na[e+1] = pa[e] + pa[e+1]
+            pa = na
+        print(pa)
         
+def exercice52(n):
+     print((n*((n**2) + 1))/2)
 
-      
+def exercice53(n):
+    if n == 0 :
+         print(0)
+    L = []
+    while n > 0:
+        L.insert(0, n % 2)  
+        n = n // 2           
+    return L    
+
+def exercice54():
+    a = random(0,6)
+    b = random(0,6)
+    print(a+b)
+
+def exercice55(n):
+    a = 1
+    for i in range(2,n+1):
+        a = a*i
+    print(a)
+    
+def exercice56(n):
+    L=[]
+    for i in range(n):
+        L.append(3 * i + 2)
+    print(L)
+
+def exercice57(n):
+    mots = n.split()
+    print(mots)
+    motlong = ""
+    taillemax = 0
+    for mot in mots :
+        compteur = 0
+        for lettre in mot:
+            compteur += 1
+        if compteur > taillemax:
+             taillemax=compteur
+             motlong=mot
+    print(mot,compteur)
+
+def exercice58(n):
+    chiff = [int(c) for c in str(n)]
+    a = 0
+    for i in range(len(chiff)):
+        a += chiff[i]**3
+    print(a)
+    
+          
+     
+          
+
+    
+     
+
+    
+        
+                  
+          
 
 
 
 def main():
 # Demande à l'utilisateur quel exercice exécuter
     choix = input("Entrez le numéro de l'exercice à exécuter : ")
-    if choix == "50":
-        exercice50(12)
+    if choix == "58":
+        exercice58(153)
     else:
         print("Exercice non reconnu.")
 if __name__ == "__main__":
