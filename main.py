@@ -65,6 +65,90 @@ def exercice19(prixHT):
 
 def exercice20(age):
       print( "paul a ", age, "ans")
+
+def exercice21(a):
+    if a > 0 :
+        print("positif")
+    if a < 0 :
+        print("negatif")
+    else :
+        print("nul")
+
+def exercice12(age):
+    if age < 18 :
+        print("mineur")
+    else :
+          print("majeur")
+    
+def exercice23(notes):
+    if notes < 10 :
+        print("non validé")
+    else : 
+          print("validé")
+
+def exercice24(a,b):
+    if a > b :
+        print(a , "est plus grand")
+    if a < b :
+         print(b , "est plus grand")
+    else :
+         print("meme nombre")
+
+def exercice25(a,b):
+    if a > b :
+        print("non")
+    if a < b :
+         print("oui")
+    else :
+         print("meme nombre")
+
+def exercice26(a):
+    if a % 5 == 0 :
+         print("divisible par 5")
+    else :
+         print("non divisible par 5")
+
+def exercice27(a):
+    if a < 12 :
+        print("enfant")
+    if a < 17 :
+         print("adolescent")
+    else :
+         print("adulte")
+
+def exercice28(a):
+    if a < 0 :
+        print("glace")
+    if a < 100 :
+         print("eau liquide")
+    else :
+         print("vapeur")
+
+def exercice29(a):
+    if a < 9 :
+        print("recalé")
+    if a < 12 :
+         print("passable")
+    if a < 15 :
+         print("bien")
+    else :
+         print("trés bien")
+
+def exercice30(N):
+     for i in range(N+1):
+          print(i)
+
+def exercice31(N):
+     for i in range(N+1):
+          
+
+
+    
+        
+
+    
+        
+    
       
       
 
