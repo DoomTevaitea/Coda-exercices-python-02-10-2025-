@@ -249,7 +249,7 @@ def exercice48(a):
     for i in range(1,a+1):
         if a % i == 0 :
             L.append(i)
-    print(L)
+    return L
 
 def exercice49(a):
     for i in range(2,a):
@@ -324,7 +324,33 @@ def exercice58(n):
     a = 0
     for i in range(len(chiff)):
         a += chiff[i]**3
-    print(a)
+    if n == a :
+        print("chiffre amstrong")
+    else :
+         print("ca ne l'est pas")
+
+def exercice59(a,b):
+    La = exercice48(a)
+    Lb = exercice48(b)
+    Lc = [x for x in La if x in Lb]
+    if not Lc: 
+        print("Pas d'éléments communs")
+        return
+    max = Lc[0] 
+    for i in range(1,len(Lc)):
+        if Lc[i] > max:
+            max = Lc[i]
+    print(max)
+
+def exercice60(l,L):
+    print(l*"*")
+    for i in range(L):
+        print("*",""*(l-2),"*")
+    print(l*"*")
+    
+
+               
+
     
           
      
@@ -343,8 +369,8 @@ def exercice58(n):
 def main():
 # Demande à l'utilisateur quel exercice exécuter
     choix = input("Entrez le numéro de l'exercice à exécuter : ")
-    if choix == "58":
-        exercice58(153)
+    if choix == "60":
+        exercice60(4,3)
     else:
         print("Exercice non reconnu.")
 if __name__ == "__main__":
