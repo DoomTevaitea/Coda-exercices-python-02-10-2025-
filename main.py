@@ -1,5 +1,5 @@
 # Exemple avec un seul exercice
-
+import random
 def exercice1():
     print("Exercice 1 : Bonjour le monde !")
     print("Hello World !")
@@ -139,17 +139,135 @@ def exercice30(N):
           print(i)
 
 def exercice31(N):
-     for i in range(N+1):
-          
+    for i in range(0, N+1):
+        print(N-i)
 
-
+def exercice32(N):
+    a = 0
+    for i in range(N+1):
+        a += i
+    print(a)
     
+def exercice33(N):
+    for i in range(10):
+        print(i*N)
+
+def exercice34(N):
+     for i in range (0,N+1):
+        if i == 0 :
+             print(0)
+        if i % 2 == 0 :
+             print(i)
+
+def exercice35(N):
+    for i in range(1, int(N ** 0.5) + 1):
+        print(i**2)
+
+def exercice36(N):
+    print("salut"*N)
+
+def exercice37(h):
+     print("*", "*"*2,"*"*3)
+
+def exercice38(a,b):
+    operation = input("1 for + ,2 for - , 3 for * , 4 for / ")
+    if operation == "1" :
+         print(a+b)
+    if operation == "2" :
+         print(a-b)
+    if operation == "3" :
+         print(a*b)
+    if operation == "4" :
+         print(a/b)
+
+def exercice39():
+    secret = random(1,10)
+    a = int(input("pair ou impair :"))
+    if a == "paire" and secret % 2 == 0 :
+         print("gagnée")
+    if a == "inpaire" and secret % 2 != 0 :
+         print("gagnée")
+    else :
+         print("Perdu")
+
+def exercice40():
+    mdp = input("mdp:")
+    if len(mdp) < 6 :
+         print("trop court")
+    else :
+        print("Valide")
+
+def exercice41():
+    Notes = [10,12,14,8,16]
+    a = 0 
+    for i in range(0,len(Notes)):
+        a += Notes[i]
+    print(a/5)
+    
+def exercice42():
+    L = [i for i in range(5)]
+    max = 0
+    min = 0
+    for i in range(len(L)):
+        if max > i :
+             max = i
+        if min < i :
+             min = i
+    print(min,max)
+
+def exercice43(mot):
+    voyelles = "aeiouyAEIOUY"
+    compteur = 0
+    for lettre in mot:
+        if lettre in voyelles:
+            compteur += 1
+    return compteur
+
+def exercice44(mot):
+    return mot[::-1]
+
+def exercice45(L):
+    somme = 0
+    for i in range(len(L)):
+        somme += L[i]
+    return somme
+
+def exercice46(L,a):
+    for i in range(len(L)):
+        if a == L[i]:
+            print("trouvée")
+
+def exercice47(L,a):
+    compteur = 0
+    for i in range(len(L)):
+        if a == L[i]:
+            compteur += 1
+    return compteur
+
+def exercice48(a):
+    L=[]
+    for i in range(1,a+1):
+        if a % i == 0 :
+            L.append(i)
+    print(L)
+
+def exercice49(a):
+    for i in range(2,a):
+        compteur = 0
+        if a % i == 0:
+            print("non premier")
+            compteur += 1
+    if compteur == 0 :
+        print("premier")
+
+def exercice50(N):
+    L = [0, 1]
+    for i in range(2,N):
+         L.append(L[-1]+L[-2])
+    print(L)
+
         
 
-    
-        
-    
-      
       
 
 
@@ -157,8 +275,8 @@ def exercice31(N):
 def main():
 # Demande à l'utilisateur quel exercice exécuter
     choix = input("Entrez le numéro de l'exercice à exécuter : ")
-    if choix == "1":
-        exercice1()
+    if choix == "50":
+        exercice50(12)
     else:
         print("Exercice non reconnu.")
 if __name__ == "__main__":
