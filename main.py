@@ -610,7 +610,7 @@ def exercice71(n):
 
 def exercice72(text,decalage):
     A = [ 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-    T = text.split()
+    T = list(text)
     L = []
     for i in range(len(T)):
          for j in range(len(A)):
@@ -627,8 +627,8 @@ def exercice72(text,decalage):
 def main():
 # Demande à l'utilisateur quel exercice exécuter
     choix = input("Entrez le numéro de l'exercice à exécuter : ")
-    if choix == "71":
-        exercice71(5)
+    if choix == "72":
+        exercice72("adc",3)
     else:
         print("Exercice non reconnu.")
 if __name__ == "__main__":
