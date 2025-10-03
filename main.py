@@ -276,8 +276,37 @@ def exercice51(N):
             pa = na
         print(pa)
         
-def exercice52(n):
-     print((n*((n**2) + 1))/2)
+def exercice52(L1,L2,L3):
+    s1 = 0
+    for i in range(3):
+          s1 = s1 + L1[i]
+    s2 = 0
+    for i in range(3):
+        s2 = s2 + L2[i]
+    s3 = 0
+    for i in range(3):
+        s3 = s3 + L3[i]
+
+    if not(s1 == s2 and s2 == s3):
+         print("non")
+    
+    somme = s1
+
+    c1= L1[0] + L2[1] + L3[2]
+    c2= L1[1] + L2[1] + L3[1]
+    c3=L1 [2] + L2[2] + L3[2]
+
+    if not(c1 == somme and c2 == somme and c3 == somme):
+         print("non")
+
+    d1 = L1[0] + L2[1] + L3[2]
+    d2 = L1[2] + L2[1] + L3[0]
+
+    if d1==somme and d2==somme :
+        print("oui")
+    else:
+         print("non")
+
 
 def exercice53(n):
     if n == 0 :
@@ -349,22 +378,62 @@ def exercice60(l,L):
     print(l*"*")
 
 def exercice61(L):
-    L0 = L[0]
     for i in range(len(L)):
-         for j in range(len(L)-i):
-              if L[i] < L[i + 1]
+        min_index = i
+        for j in range(i+1,len(L)):
+            if L[j] < L[min_index] :
+                 min_index = j
+            
+        L[i], L[min_index] = L[min_index], L[i]
+    return L
      
+def exercice62(mot):
+    L = list(mot)
+    n = len(L)
+    if n % 2 == 0:
+        L1 = L[:n//2]
+        L2 = L[n//2:]
+    else :
+         L1 = L[:n//2]
+         L2 = L[(n//2+1):]
 
-               
+    L2 = L2[::-1]
+    if L1 == L2 :
+        print("Palindrome")
+    else :
+        print("non")
 
+def exercice63(mot1,mot2):
+    L1 = list(mot1)
+    L2 = list(mot2)
+    if len(L2) == len(L1):
+        L3 =[x in L1 for x in L2]
+        if len(L3) == len(L1):
+             print("anagrame")
+        else :
+             print("pas anagrame")
+    else :
+         print("pas anagrame")
     
-          
-     
-          
-
+def exercice64(mots):
+    L = list(mots)
+    compteur = 1
+    L1 = []
+    for i in range(1,len(L)):
+        if L[i] == L[i-1] :
+            compteur += 1
+        else :
+             L1.append(L[i-1])
+             L1.append(compteur)
+             compteur = 1
+    L1.append(L[-1])
+    L1.append(compteur)
     
-     
+    print(L1)
 
+def exercice65():
+             
+            
     
         
                   
@@ -375,8 +444,8 @@ def exercice61(L):
 def main():
 # Demande à l'utilisateur quel exercice exécuter
     choix = input("Entrez le numéro de l'exercice à exécuter : ")
-    if choix == "60":
-        exercice60(4,3)
+    if choix == "64":
+        exercice64("aaabbc")
     else:
         print("Exercice non reconnu.")
 if __name__ == "__main__":
