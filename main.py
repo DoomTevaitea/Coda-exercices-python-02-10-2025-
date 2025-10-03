@@ -574,21 +574,50 @@ def exercice70():
     temp1 = L1[:]
     temp2 = L2[:]
 
-    while temp1 or temp2:   # tant qu'il reste des éléments
-    # Tirer 0 ou 1 au hasard → choisir L1 ou L2
+    while temp1 or temp2:   
         choix = random.randint(0,1)
 
         if choix == 0 and temp1:
-            i = random.randint(0, len(temp1)-1)  # indice au hasard
+            i = random.randint(0, len(temp1)-1)
             L3.append(temp1[i])
-            del temp1[i]  # retirer l'élément utilisé
+            del temp1[i]  
         elif choix == 1 and temp2:
             i = random.randint(0, len(temp2)-1)
             L3.append(temp2[i])
             del temp2[i]
     print(L3)
 
+def exercice71(n):
+    suite = ["1"]
+    for _ in range(1,n):
+        s = suite[-1]
+        count = 0
+        val = s[0]
+        res = ""
 
+        for ch in s:
+            if ch == val:
+                count += 1
+            else:
+                res += str(count) + val
+                count = 1
+                val = ch
+
+        res += str(count) + val
+        suite.append(res)
+    
+    print(suite)
+
+def exercice72(text,decalage):
+    A = [ 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    T = text.split()
+    L = []
+    for i in range(len(T)):
+         for j in range(len(A)):
+            if T[i] == A[j]:
+                 L.append(A[j + decalage])
+    print(L)
+    
 
      
           
@@ -598,8 +627,8 @@ def exercice70():
 def main():
 # Demande à l'utilisateur quel exercice exécuter
     choix = input("Entrez le numéro de l'exercice à exécuter : ")
-    if choix == "70":
-        exercice70()
+    if choix == "71":
+        exercice71(5)
     else:
         print("Exercice non reconnu.")
 if __name__ == "__main__":
