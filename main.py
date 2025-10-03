@@ -197,23 +197,26 @@ def exercice40():
     else :
         print("Valide")
 
-def exercice41():
-    Notes = [10,12,14,8,16]
+def exercice41(Notes):
     a = 0 
     for i in range(0,len(Notes)):
         a += Notes[i]
-    print(a/5)
+    return a/(len(Notes)+1)
     
-def exercice42():
-    L = [i for i in range(5)]
-    max = 0
-    min = 0
-    for i in range(len(L)):
-        if max > i :
-             max = i
-        if min < i :
-             min = i
-    print(min,max)
+def exercice42(L):
+    if not L:
+        return None, None
+    
+    minimum = L[0]
+    maximum = L[0]
+    
+    for i in range(1, len(L)):
+        if L[i] < minimum:
+            minimum = L[i]
+        if L[i] > maximum:
+            maximum = L[i]
+    return minimum, maximum
+
 
 def exercice43(mot):
     voyelles = "aeiouyAEIOUY"
@@ -252,13 +255,12 @@ def exercice48(a):
     return L
 
 def exercice49(a):
+    compteur = 0
     for i in range(2,a):
-        compteur = 0
         if a % i == 0:
-            print("non premier")
             compteur += 1
     if compteur == 0 :
-        print("premier")
+        return a
 
 def exercice50(N):
     L = [0, 1]
@@ -431,12 +433,164 @@ def exercice64(mots):
     
     print(L1)
 
-def exercice65():
-             
-            
+def exercice65(n):
+    facteurs = []
+    d = 2
+    while n > 1:
+        while n % d == 0:
+            facteurs.append(d)
+            n = n // d
+        d += 1
+    print(facteurs)
     
+def exercice66(notes):
+     ajout = int(input("nouvelle notes :"))
+     notes.append(ajout)
+     min , max = exercice42(notes)
+     moyenne = exercice41(notes)
+     print( moyenne , min , max )
+
+
+def exercice67btod(n):
+    decimal = 0
+    puissance = 0
+    i = len(n) - 1
+    while i >= 0:
+        chiffre = n[i]
+        if chiffre == 1:
+            decimal += 2**puissance
+        puissance += 1
+        i -= 1
+    
+    return decimal
+
+def exercice67htod(hexa):
+    hex_symbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+                   "A", "B", "C", "D", "E", "F"]
+    valeurs = []
+    sepa = [c.upper() for c in hexa]
+    sepa = sepa[::-1]
+
+    for symbole in sepa:
+        for i in range(len(hex_symbols)):
+            if symbole == hex_symbols[i]:
+                valeurs.append(i)
+    deci = 0
+    for rang in range(len(valeurs)):
+         deci += (16**rang)*valeurs[rang]
+    return deci
         
-                  
+         
+    
+def exercice67dtoh(n):
+    hex_symbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+                   "A", "B", "C", "D", "E", "F"]
+    L = []
+    while n // 16 > 0 :
+        L.append(n % 16)
+        n = n // 16
+    L.append(n % 16)
+    L1 = []
+    for i in range(len(L)-1, -1, -1):
+         L1.append(hex_symbols[L[i]])
+    return "".join(L1)
+
+def exercicedtob(n):
+    if n == 0 :
+         print(0)
+    L = []
+    while n > 0:
+        L.insert(0, n % 2)  
+        n = n // 2           
+    return L 
+
+def exercice67():
+    bases = input("enter decimal , binaire or hexadecimal:")
+ 
+    if bases == "binaire" :
+         nombre = input("entrer ur number:")
+         chiffres = [int(c) for c in str(nombre)]
+         nombrebinaire = chiffres
+         nombredecimal = exercice67btod(chiffres)
+         nombrehexadecimal = exercice67dtoh(nombredecimal)
+
+    if bases == "hexadecimal" :
+        chiffre = input("enter ur number : ")
+        L = []
+        for caractere in chiffre:
+            L.append(caractere)
+        nombrehexadecimal = chiffre
+        nombredecimal = exercice67htod(nombrehexadecimal)
+        nombrebinaire = exercicedtob(nombredecimal)  
+ 
+    if bases == "decimal" :
+         nombre = int(input("entrer ur number:"))
+         nombredecimal = nombre
+         nombrebinaire = exercicedtob(nombre)
+         nombrehexadecimal = exercice67dtoh(nombredecimal)         
+    
+    else :
+         print("mode are not regognize")
+    
+    print(nombredecimal,nombrebinaire,nombrehexadecimal)
+
+def exercice68(L):
+    L1 = L[0:3]
+    L2 = L[3:6]
+    L3 = L[6:9]
+    print(L1, "\n", L2, "\n", L3)
+
+def exercice69(j1,m1,j2,m2):
+    mois = [31,28,31,30,31,30,31,31,30,31,30,31]
+    L1 = [x for x in mois[:m1]]
+    L2 = [x for x in mois[:m2]]
+    n1 = 0
+    n2 = 0
+    for i in range(len(L1)):
+        n1 += L1[i]
+    n1 += (L1[-1]-j1)
+    for i in range(len(L2)):
+        n2 += L2[i]
+    n2 += (L2[-1])-j2
+
+    difference = n1 - n2
+    if difference > 0:
+        print(difference ,"jour")
+    else :
+         print(-difference ,"jour")
+
+def exercice70():
+    numdelettre = int(input("nombre de lettre dans ton mdp: "))
+    numdechiffre = int(input("nombre de chiffre dans ton mdp : "))
+    L1 = []
+    L2 = []
+    lettre = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    L3 = []
+    for i in range(numdechiffre):
+        L1.append(random.randint(0,9))
+    for i in range(numdelettre):
+         L2.append(lettre[random.randint(0,24)])
+
+    temp1 = L1[:]
+    temp2 = L2[:]
+
+    while temp1 or temp2:   # tant qu'il reste des éléments
+    # Tirer 0 ou 1 au hasard → choisir L1 ou L2
+        choix = random.randint(0,1)
+
+        if choix == 0 and temp1:
+            i = random.randint(0, len(temp1)-1)  # indice au hasard
+            L3.append(temp1[i])
+            del temp1[i]  # retirer l'élément utilisé
+        elif choix == 1 and temp2:
+            i = random.randint(0, len(temp2)-1)
+            L3.append(temp2[i])
+            del temp2[i]
+    print(L3)
+
+
+
+     
           
 
 
@@ -444,8 +598,8 @@ def exercice65():
 def main():
 # Demande à l'utilisateur quel exercice exécuter
     choix = input("Entrez le numéro de l'exercice à exécuter : ")
-    if choix == "64":
-        exercice64("aaabbc")
+    if choix == "70":
+        exercice70()
     else:
         print("Exercice non reconnu.")
 if __name__ == "__main__":
